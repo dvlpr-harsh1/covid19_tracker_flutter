@@ -1,16 +1,63 @@
-# covid_detail_app
+# 🦠 COVID-19 Live Tracker App (Flutter)
 
-A new Flutter project.
+A Flutter application that tracks global and country-specific COVID-19 statistics using live data APIs from [disease.sh](https://disease.sh/).
 
-## Getting Started
+---
 
-This project is a starting point for a Flutter application.
+## 📱 Features
+- Real-time global stats (infected, deaths, recovered)
+- Country-wise stats with flags
+- REST API integration using `http` package
+- Dynamic UI with loading states
+- Model-based JSON parsing (`CovidCountry`, `CovidInfectedPeoples`)
+- Detail screen with reusable widget for each stat
+- Clean and responsive UI
 
-A few resources to get you started if this is your first Flutter project:
+---
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## 🌐 API Source
+- Base URL: `https://disease.sh/v3/covid-19/`
+- Global stats: `https://disease.sh/v3/covid-19/all`
+- Country-wise stats: `https://disease.sh/v3/covid-19/countries`
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+---
+
+## 📦 Packages Used
+- `http`
+- `flutter_spinkit` *(optional for loading animations)*
+- `intl`
+
+---
+
+## 🛠️ How It Works
+- Makes GET requests to public APIs via `AppUrl` class
+- Parses global data into `CovidInfectedPeoples`
+- Parses country list into `CovidCountry` with nested `CountryInfo`
+- Displays real-time stats in a `ListView` with flags
+- On tap, navigates to detailed screen with:
+  - Total cases
+  - Today’s recovery
+  - Critical & death counts
+  - Country location (latitude & longitude)
+
+---
+
+## 💡 Code Highlights
+- Safe `double` parsing using `(json['key'] as num?)?.toDouble()`
+- `FutureBuilder` with fallback for empty/error states
+- Stateless custom widget `CustomViewWidget` for info rows
+- Navigation using `MaterialPageRoute`
+- API separation using `AppUrl` constants
+
+---
+
+## 🔍 Screenshots
+_Add app screenshots here (home list, detail screen, etc.)_
+
+---
+
+## 🧑‍💻 Author
+**Harish Rajput**  
+- [GitHub](https://github.com/dvlpr-harsh1)  
+- [Portfolio](http://portfolio-9730.web.app)  
+- [LinkedIn](https://linkedin.com/in/harish-rajput93072)
